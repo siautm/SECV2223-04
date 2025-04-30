@@ -1,0 +1,112 @@
+/*Style for Assignment 2*/
+
+* {
+    font-family:'Times New Roman', Times, serif;
+    box-sizing: border-box;
+    margin: 5px;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "left content right"
+        "footer footer footer";
+    grid-template-columns: 1fr 4fr 1fr;    
+}
+
+.header img {   
+    width: auto;
+    height: 60px;
+    border-radius: 100%;
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+    background-color: grey;
+    border: 1px solid black;
+    align-items: center;
+    padding: 1em;
+    gap: 1em;
+    color: aliceblue;
+}
+
+.left a {
+    display: block;
+    background-color: gainsboro;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    padding: 15px;
+    margin: 10px 0px;
+}
+
+.left a:hover {
+    background-color: gray;
+    color: whitesmoke;
+}
+
+.right-item a {
+    text-decoration: none;
+    display: block;
+    margin: 10px 0px;
+}
+
+.right {
+    padding: 15px;
+    background-color: gainsboro;
+    border: 1px solid black;    
+    /*align-content: center;*/
+}
+
+.content {
+    grid-area: content;
+    padding: 10px;
+}
+
+h2 {
+    padding: 5px;
+    border-bottom: 2px solid maroon;
+}
+
+.content p {
+    margin-top: 1em;
+}
+
+.content1, .content2, .content3, .content4 {
+    display: block;
+    min-height: 10em; /*later tukar or delete*/
+    padding: 10px 0px;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: blanchedalmond;
+    text-align: center;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: maroon;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1em;
+    opacity: 0.3;
+    transition: opacity 0.2s;
+}
+  
+.scroll-top:hover {
+    opacity: 1;
+}  
