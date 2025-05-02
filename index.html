@@ -1,174 +1,218 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Website Assignment 2</title>
-    <link rel="stylesheet" href="a2style.css">
-    <style>
-    body {
-        background-color: #ffffff;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .header {
-        background-color: #a6192e; /* CMU dark red */
-        color: white;
-    }
-
-    .left {
-        background-color: #f5f5f5;
-    }
-
-    .left a {
-        background-color: #ffffff;
-        color: #333;
-        border-radius: 5px;
-    }
-
-    .left a:hover {
-        background-color: #a6192e;
-        color: white;
-    }
-
-    .right {
-        background-color: #f5f5f5;
-    }
-
-    .right-item a {
-        background-color: #ffffff;
-        padding: 10px;
-        border-radius: 5px;
-        color: #333;
-    }
-
-    .right-item a:hover {
-        background-color: #a6192e;
-        color: white;
-    }
-
-    .content {
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-
-    h2 {
-        color: #a6192e;
-        font-family: Georgia, 'Times New Roman', Times, serif;
-    }
-
-    .footer {
-        background-color: #e6e6e6;
-        color: #333;
-        font-weight: normal;
-    }
-
-    .scroll-top {
-        background-color: #a6192e;
-    }
-</style>
-
-</head>
-<body>
-    
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="a2style.css" />
+  </head>
+  <body>
+    <!-- Main grid layout container -->
     <div class="grid-container" id="top">
-        <div class="header">
-              <h1>That One Website</h1>
-              <p class="tagline">Exploring the World of Computing</p>
-        </div>
+      <!-- Header section -->
+      <div class="header">
+        <h1>Welcome to My Website</h1>
+        <p class="tagline">Exploring the World of Computing</p>
+      </div>
 
-        <div class="left">
-            <a href="#main-content">Main Content</a>
-            <a href="#about-us">About Us</a>
-            <a href="#content">Content</a>
-            <a href="#others">Contact Us</a>      
-        </div>
-        <div class="right">
-          <details>
+      <!-- Left sidebar with navigation links -->
+      <div class="left">
+        <a href="#intro">Introduction</a>
+        <a href="#biography">Biography</a>
+        <a href="#project">My project</a>
+        <a href="#others">Contact</a>
+      </div>
+
+      <!-- Right sidebar with collapsible extra links -->
+      <div class="right">
+        <details>
           <summary><strong>More</strong></summary>
-            <div class="right-item">
-              <a href="">Right item1</a>
-              <a href="">Right item2</a>
-              <a href="">Right item3</a>
+          <div class="right-item">
+            <a href="#">My Skills</a>
+            <a href="#">Achievements</a>
+            <a href="#">My Education</a>
+          </div>
+        </details>
+      </div>
+
+      <!-- Main content area -->
+      <div class="content">
+        <!-- Introduction section -->
+        <div class="content1" id="intro">
+          <h2>Introduction</h2>
+          <div class="intro-container">
+            <div class="intro-text">
+              <p>Hi, my name is</p>
+              <h1>Muhammad Zulqarnain,</h1>
+              <h3>I'm a computer network student.</h3>
             </div>
-          </details>
+            <div class="intro-image">
+              <img src="photo.jpg" alt="Profile Picture" />
+            </div>
+          </div>
         </div>
 
-        <div class="content">
-            <h1>Welcome to That One Website <i>!</i></h1>
-            <div class="content1" id="main-content">
-                <h2>Main Content</h2>
-                <p>Welcome to our personal website!
-We are a team of three enthusiastic students passionate about web development and technology. This landing page is a simple showcase of our collaboration, interests, and creativity using HTML5 and CSS Grid.</p>
+        <!-- Project content section -->
+        <div class="content2" id="biography">
+          <h2>Biography</h2>
+          <div class="intro-container">
+            <div class="intro-image">
+              <img
+                src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGFraW5nJTIwcGhvdG98ZW58MHx8MHx8fDA%3D"
+                alt="Placeholder Image"
+              />
             </div>
-        
-            <div class="content2" id="about-us">
-                <h2>About Us</h2>
-                <div class="member-card">
-                  <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGFraW5nJTIwcGhvdG98ZW58MHx8MHx8fDA%3D" alt="Member 1 Photo">
-                  <div class="member-info">
-                    <h3>Muhammad Zulqarnain Bin Ali</h3>
-                    <p><em>Science Computer Student</em></p>
-                    <p>A passionate and driven Computer Science student with a strong enthusiasm for coding and problem-solving. Thrives in competitive environments, regularly participating in programming contests, hackathons, and algorithmic challenges to sharpen technical skills and stay ahead of the curve. Experienced with various programming languages and development tools, with a keen interest in software engineering, algorithms, and innovative tech solutions. Always eager to learn, collaborate, and tackle complex problems through logical thinking and creative approaches.</p>
-                  </div>
-                </div>
-              
-                <div class="member-card">
-                  <img src="https://avatars.githubusercontent.com/u/148193874?v=4" alt="Member 2 Photo">
-                  <div class="member-info">
-                    <h3>Ain Najiha Binti Junaidi</h3>
-                    <p><em>Science Computer Student</em></p>
-                    <p>A motivated computer science student majoring in network and computer security. Have a strong interest in designing and developing efficient and secure applications. Enthusiastic about utilizing skills to collaboratively resolve issues in the actual world through practical and innovative methods.</p>
-                  </div>
-                </div>
-              
-                <div class="member-card">
-                  <img src="https://via.placeholder.com/100" alt="Member 3 Photo">
-                  <div class="member-info">
-                    <h3>[Member Name]</h3>
-                    <p><em>[Role]</em></p>
-                    <p>[Brief description about this member: background, interests, personal detail.]</p>
-                  </div>
-              </div>
+            <div class="intro-text">
+              <p>This is my biography</p>
+              <table>
+                <tr>
+                  <td>Birth date: 03 May 2004</td>
+                  <td>Country: Malaysia</td>
+                </tr>
+                <tr>
+                  <td>Religion: Islam</td>
+                  <td>Age: 23</td>
+                </tr>
+                <tr>
+                  <td>Race: Malay</td>
+                  <td>Phone: 010-2322213</td>
+                </tr>
+              </table>
             </div>
-            
-            <div class="content3" id="content">
-                <h2>Content</h2>
-                <p>Lorem ipsum dolor sit amet</p>
-            </div>
-            
-            <div class="content4" id="others">
-                <h2>Contact Us</h2>
-
-                <!-- Member 1 Contact Template -->
-                <div class="contact-card">
-                  <h3>Muhammad Zulqarnain Bin Ali</h3>
-                  <p><strong>Phone:</strong> 013456789</p>
-                  <p><strong>Instagram:</strong> <a href="#" target="_blank">@zullll</a></p>
-                  <p><strong>Facebook:</strong> <a href="#" target="_blank">facebook.com/zullll</a></p>
-                </div>
-              
-                <!-- Member 2 Contact Template -->
-                <div class="contact-card">
-                  <h3>Ain Najiha Binti Junaidi</h3>
-                  <p><strong>Phone:</strong> 01160604480</p>
-                  <p><strong>Instagram:</strong> <a href="#" target="_blank">@ainjhaa</a></p>
-                  <p><strong>Facebook:</strong> <a href="#" target="_blank">facebook.com/ainnajiha</a></p>
-                </div>
-              
-                <!-- Member 3 Contact Template -->
-                <div class="contact-card">
-                  <h3>[Member 3 Name]</h3>
-                  <p><strong>Phone:</strong> [Insert phone number]</p>
-                  <p><strong>Instagram:</strong> <a href="#" target="_blank">@username</a></p>
-                  <p><strong>Facebook:</strong> <a href="#" target="_blank">facebook.com/username</a></p>
-                </div>
-            </div>        
+          </div>
         </div>
 
-        <div class="footer">
-            <p>2025 That One. All rights reserved.</p>
+        <!-- Biography section -->
+        <div class="content3" id="project">
+          <h2>My Project</h2>
+
+          <!-- Member card with image on left -->
+          <div class="member-card">
+            <img
+              src="https://edison365.com/?seraph_accel_gi=wp-content%2Fuploads%2F2022%2F03%2FHow-do-hackathons-work.png&n=iNf2OlXUkWEBkZdk37MnnA"
+              alt="hackathons"
+            />
+            <div class="member-info">
+              <h3>Hackathons</h3>
+              <p><em>3 September 2023</em></p>
+              <p>
+                Managed a team of 4 developers to brainstorm, prototype, and
+                pitch the solution within 36 hours. Designed database schema and
+                implemented backend logic using Node.js and MongoDB. Presented
+                the project to a panel of judges, receiving recognition for
+                social impact. Deployed a functional demo on Heroku and
+                maintained a GitHub repository for open-source contributions.
+              </p>
+            </div>
+          </div>
+
+          <!-- Member card with image on right -->
+          <div class="member-card">
+            <div class="member-info">
+              <h3>AI project</h3>
+              <p><em>4 October 2022</em></p>
+              <p>
+                Collaborated in a team of 4 to build an AI model that detects
+                pneumonia and other abnormalities from chest X-ray images.
+                Preprocessed a dataset of 5,000+ medical images using Python
+                libraries such as OpenCV and NumPy. Trained and fine-tuned a
+                Convolutional Neural Network (CNN) using TensorFlow and Keras,
+                achieving 88% accuracy on test data. Built a simple web
+                interface using Flask to allow users to upload X-rays and view
+                model predictions in real-time. Gained hands-on experience in
+                data handling, model evaluation (precision, recall, F1-score),
+                and ethical AI practices.
+              </p>
+            </div>
+            <img
+              src="https://www.regens.com/documents/20182/72144/first+AI+project+CIKKBE.jpg/03f41983-cbde-0ff0-470d-89f9d8733bed?t=1563869152630"
+              alt="Member 1 Photo"
+            />
+          </div>
         </div>
+
+        <div class="skills-section">
+          <h2>My Skills</h2>
+          <div class="skills-container">
+            <div class="skill-box">
+              <img
+                src="https://d502jbuhuh9wk.cloudfront.net/courses/6570c175e4b00d436e1c89c0/6570c175e4b00d436e1c89c0_scaled_cover.jpg?v=1"
+                alt="Skill 1"
+              />
+              <p>HTML</p>
+            </div>
+            <div class="skill-box">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/919/919826.png"
+                alt="Skill 2"
+              />
+              <p>CSS</p>
+            </div>
+            <div class="skill-box">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRss-86vRuxOArrVRmMgerLZ5pi8yCs6U7zsQ&s"
+                alt="Skill 3"
+              />
+              <p>Javascript</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact section -->
+        <div class="content4" id="others">
+          <h2>Contact Us</h2>
+          <div class="contact-section">
+            <!-- Contact form -->
+            <div class="contact-info">
+              <h2>Feel free to contact me</h2>
+              <form class="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+
+            <!-- Contact email list -->
+            <div class="contact-table">
+              <table>
+                <tr>
+                  <td>
+                    email:
+                    <a href="mailto:zulqarnain@graduate.utm.my">
+                      zulqarnain@graduate.utm.my</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>ig: <a href="(ig link)"> (ig link) </a></td>
+                </tr>
+                <tr>
+                  <td>
+                    facebook: <a href="(facebook link)">(facebook link)</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>phone number:</td>
+                </tr>
+                <tr>
+                  <td>address:</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer section -->
+      <div class="footer">
+        <p>2025 All rights reserved.</p>
+      </div>
     </div>
-    <a href="#top" class="scroll-top" aria-label="Scroll to top">↑</a>
-</body>
+
+    <!-- Scroll-to-top button -->
+    <a href="#top" class="scroll-top" aria-label="Scroll to top">&uarr;</a>
+  </body>
 </html>
