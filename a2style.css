@@ -1,190 +1,189 @@
-/* CSS for assignment 2*/
+/* ------------------------ */
+/* Base Reset & Body Setup */
+/* ------------------------ */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body,
 html {
-    scroll-behavior: smooth;
-    background-color: #f8f9fa;
-    color: #212529;
+  background-color: #f9fafb;
+  color: #1f2937;
+  scroll-behavior: smooth;
 }
 
-/* Layout grid */
+/* ------------------------ */
+/* Grid Layout Structure    */
+/* ------------------------ */
 .grid-container {
-    display: grid;
-    grid-template-areas:
-        "header header header"
-        "left content right"
-        "footer footer footer";
-    grid-template-columns: 1fr 4fr 1fr;
-    gap: 1rem;
-    padding: 1rem;
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "left content right"
+    "footer footer footer";
+  grid-template-columns: 1fr 4fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
 }
 
-/* Header */
+/* ------------------------ */
+/* Header with Animation    */
+/* ------------------------ */
 .header {
-    grid-area: header;
-    display: flex;
-    align-items: center;
-    padding: 2rem;
-    gap: 1.5rem;
-    color: white;
-    border-radius: 12px;
-    background-image: url('https://cdn.pixabay.com/photo/2020/04/14/07/58/code-5041067_1280.jpg'); /* Example computer image */
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  gap: 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #3b82f6, #9333ea);
+  background-size: 200%;
+  background-position: left;
+  color: white;
+  transition: background-position 0.5s ease-in-out;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-
-.header img {
-    height: 60px;
-    border-radius: 50%;
-}
-
-/* Sidebar left */
-.left {
-    grid-area: left;
-    background-color: #ffffff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.05);
-}
-
-.left a {
-    display: block;
-    text-decoration: none;
-    color: #212529;
-    background-color: #f1f3f5;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    transition: all 0.2s;
-}
-
-.left a:hover {
-    background-color: #a6192e;
-    color: white;
-}
-
-/* Sidebar right */
+/* ------------------------ */
+/* Sidebars (Left & Right)  */
+/* ------------------------ */
+.left,
 .right {
-    grid-area: right;
-    background-color: #ffffff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  background-color: #4b0b86;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  color: #ccc;
 }
 
+.left a,
 .right-item a {
-    display: block;
-    text-decoration: none;
-    color: #212529;
-    background-color: #f1f3f5;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    transition: all 0.2s;
+  display: block;
+  text-decoration: none;
+  background-color: #f5f3f6;
+  color: #1f2937;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+.left a:hover,
 .right-item a:hover {
-    background-color: #a6192e;
-    color: white;
+  background-color: #3b82f6;
+  color: white;
 }
 
-/* Content area */
+/* ------------------------ */
+/* Main Content Section     */
+/* ------------------------ */
 .content {
-    grid-area: content;
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.content h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+  grid-area: content;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 h2 {
-    font-size: 1.5rem;
-    color: #a6192e;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 2px solid #a6192e;
-    padding-bottom: 0.3rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.5rem;
+  color: #9333ea;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #9333ea;
+  padding-bottom: 0.3rem;
 }
 
-.content p {
-    margin-top: 1em;
-    line-height: 1.6;
-}
-
-/* Footer */
+/* ------------------------ */
+/* Footer Section           */
+/* ------------------------ */
 .footer {
-    grid-area: footer;
-    background-color: #f1f3f5;
-    text-align: center;
-    padding: 1rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    color: #555;
+  grid-area: footer;
+  background-color: #e5e7eb;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #4b5563;
 }
 
-/* Scroll top button */
+/* ------------------------ */
+/* Scroll-to-Top Button     */
+/* ------------------------ */
 .scroll-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #a6192e;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 1em;
-    opacity: 0.5;
-    transition: opacity 0.3s;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #9333ea;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1em;
+  opacity: 0.6;
+  transition: 0.3s ease-in-out;
 }
 
-.scroll-top:hover {
-    opacity: 1;
+/* ------------------------ */
+/* Intro Section Layout     */
+/* ------------------------ */
+.intro-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
-/* Details element for collapsible */
-details {
-    border: none;
-    background: none;
-    padding: 0;
-    margin-top: 10px;
+.intro-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-summary {
-    cursor: pointer;
-    color: #a6192e;
-    font-weight: bold;
-    margin-bottom: 5px;
+.intro-image img {
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
 
-details[open] {
-    padding-top: 5px;
+.intro-text {
+  flex: 2;
+  text-align: left;
 }
 
+.intro-text table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.intro-text td {
+  border: 1px solid #d1d5db;
+  padding: 8px;
+  text-align: center;
+}
+
+/* ------------------------ */
+/* Member Cards Styling     */
+/* ------------------------ */
 .member-card {
   display: flex;
   align-items: flex-start;
   margin-bottom: 1.5rem;
-  background-color: #ffffffcc;
+  background-color: #ffffff;
   padding: 1rem;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .member-card img {
-  width: 100px;
+  width: 1000px;
   height: 100px;
   object-fit: cover;
   border-radius: 12px;
@@ -194,34 +193,101 @@ details[open] {
 .member-info h3 {
   margin: 0;
   font-size: 1.2rem;
-  color: #2c3e50;
+  color: #1f2937;
 }
 
 .member-info p {
   margin: 0.3rem 0;
-  color: #444;
+  color: #4b5563;
 }
 
-.contact-card {
-  background-color: #ffffffcc;
+/* ------------------------ */
+/* Contact Section Layout   */
+/* ------------------------ */
+.contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 20px 0;
+}
+
+.contact-info,
+.contact-table {
+  flex: 1;
+  background-color: #f3f4f6;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  margin: 10px 0 5px;
+}
+
+.contact-form input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.contact-form button {
+  padding: 10px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.contact-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.contact-table th,
+.contact-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+/* ------------------------ */
+/* Skills Section Layout    */
+/* ------------------------ */
+.skills-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.skills-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.skill-box {
+  background-color: #ffffff;
   padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  transition: transform 0.3s;
 }
 
-.contact-card h3 {
-  margin-bottom: 0.5rem;
-  color: #2c3e50;
-}
-
-.contact-card a {
-  color: #2575fc;
-  text-decoration: none;
-}
-
-.contact-card a:hover {
-  text-decoration: underline;
+.skill-box img {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 12px;
 }
 
 
