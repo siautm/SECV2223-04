@@ -1,12 +1,13 @@
-/*  Group member:
-    1. AIN NAJIHA BINTI JUNAIDI (A23CS0038)
-    2. MUHAMMAD ZULQARNAIN BIN ALI (A23CS0139)
-    3. SIA JUN YI (A23CS0178)
+/* 
+  Group Members:
+  1. AIN NAJIHA BINTI JUNAIDI (A23CS0038)
+  2. MUHAMMAD ZULQARNAIN BIN ALI (A23CS0139)
+  3. SIA JUN YI (A23CS0178)
 */
 
-/* ------------------------ */
-/* Base Reset & Body Setup */
-/* ------------------------ */
+/* ----------------------------- */
+/* Base Reset & General Styling */
+/* ----------------------------- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,15 +17,17 @@
 
 body,
 html {
-  background-color: #f9fafb;
+  background-color: #f8fafc;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
   color: #1f2937;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
-/* ------------------------ */
-/* Grid Layout Structure    */
-/* ------------------------ */
+/* ---------------------------- */
+/* Grid Layout for Page Layout */
+/* ---------------------------- */
 .grid-container {
   display: grid;
   grid-template-areas:
@@ -36,9 +39,9 @@ html {
   padding: 1rem;
 }
 
-/* ------------------------ */
-/* Header with Animation    */
-/* ------------------------ */
+/* ---------------------------- */
+/* Header Section with Animation */
+/* ---------------------------- */
 .header {
   grid-area: header;
   display: flex;
@@ -52,18 +55,32 @@ html {
   color: white;
   transition: background-position 0.5s ease-in-out;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  animation: gradientShift 6s ease infinite;
 }
 
-/* ------------------------ */
-/* Sidebars (Left & Right)  */
-/* ------------------------ */
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  animation: fadeInDown 1s ease-out;
+}
+
+.header .tagline {
+  font-size: 1.2rem;
+  font-style: italic;
+  opacity: 0;
+  animation: fadeIn 2s ease-out 0.5s forwards;
+}
+
+/* ---------------------------- */
+/* Sidebars (Left and Right) */
+/* ---------------------------- */
 .left,
 .right {
   background-color: #4b0b86;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  color: #ccc;
+  color: #f0f0f0;
 }
 
 .left a,
@@ -84,10 +101,12 @@ html {
   color: white;
 }
 
-/* ------------------------ */
-/* Main Content Section     */
-/* ------------------------ */
+/* ---------------------------- */
+/* Main Content Section */
+/* ---------------------------- */
 .content {
+  max-width: 1200px;
+  margin: 0 auto;
   grid-area: content;
   background-color: #ffffff;
   padding: 2rem;
@@ -104,9 +123,9 @@ h2 {
   padding-bottom: 0.3rem;
 }
 
-/* ------------------------ */
-/* Footer Section           */
-/* ------------------------ */
+/* ---------------------------- */
+/* Footer Section */
+/* ---------------------------- */
 .footer {
   grid-area: footer;
   background-color: #e5e7eb;
@@ -117,9 +136,9 @@ h2 {
   color: #4b5563;
 }
 
-/* ------------------------ */
-/* Scroll-to-Top Button     */
-/* ------------------------ */
+/* ---------------------------- */
+/* Scroll-to-Top Button */
+/* ---------------------------- */
 .scroll-top {
   position: fixed;
   bottom: 20px;
@@ -132,11 +151,18 @@ h2 {
   font-size: 1em;
   opacity: 0.6;
   transition: 0.3s ease-in-out;
+  animation: bounce 2s infinite;
 }
 
-/* ------------------------ */
-/* Intro Section Layout     */
-/* ------------------------ */
+.scroll-top:hover {
+  background-color: #7e22ce;
+  opacity: 1;
+  box-shadow: 0 0 12px rgba(147, 51, 234, 0.6);
+}
+
+/* ---------------------------- */
+/* Introduction Section */
+/* ---------------------------- */
 .intro-container {
   display: flex;
   justify-content: space-between;
@@ -176,9 +202,9 @@ h2 {
   text-align: center;
 }
 
-/* ------------------------ */
-/* Member Cards Styling     */
-/* ------------------------ */
+/* ---------------------------- */
+/* Member Cards Styling */
+/* ---------------------------- */
 .member-card {
   display: flex;
   align-items: flex-start;
@@ -187,6 +213,14 @@ h2 {
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.member-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
 .member-card img {
@@ -209,9 +243,15 @@ h2 {
   color: #4b5563;
 }
 
-/* ------------------------ */
-/* Contact Section Layout   */
-/* ------------------------ */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ---------------------------- */
+/* Contact Section Styling */
+/* ---------------------------- */
 .contact-section {
   display: flex;
   flex-wrap: wrap;
@@ -254,6 +294,11 @@ h2 {
   cursor: pointer;
 }
 
+.contact-form button:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
 .contact-table table {
   width: 100%;
   border-collapse: collapse;
@@ -266,9 +311,9 @@ h2 {
   text-align: center;
 }
 
-/* ------------------------ */
-/* Skills Section Layout    */
-/* ------------------------ */
+/* ---------------------------- */
+/* Skills Section Styling */
+/* ---------------------------- */
 .skills-section {
   text-align: center;
   margin-top: 40px;
@@ -288,7 +333,13 @@ h2 {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 180px;
-  transition: transform 0.3s;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
 .skill-box img {
@@ -298,6 +349,15 @@ h2 {
   margin-bottom: 12px;
 }
 
+.skill-box p {
+  font-weight: 600;
+  margin-top: 0.5rem;
+  color: #4b0b86;
+}
+
+/* ---------------------------- */
+/* Responsive Design (Mobile) */
+/* ---------------------------- */
 @media (max-width: 768px) {
   .grid-container {
     grid-template-areas:
@@ -314,41 +374,70 @@ h2 {
   .contact-section {
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
 
   .member-card img {
-    margin-right: 0;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 0;
   }
 
   .skills-container {
     flex-direction: column;
     align-items: center;
   }
+  .contact-form input,
+  .contact-form button {
+    width: 100%;
+  }
+
 }
 
-.skill-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+section {
+  padding: 2rem 1rem;
 }
 
-.header {
-  animation: gradientShift 6s ease infinite;
+
+/* ✨ Scroll Animation Styling */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
 }
 
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ---------------------------- */
+/* Keyframe Animations */
+/* ---------------------------- */
 @keyframes gradientShift {
   0% { background-position: left; }
   50% { background-position: right; }
   100% { background-position: left; }
 }
 
-.scroll-top {
-  animation: bounce 2s infinite;
-}
-
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
@@ -357,4 +446,3 @@ h2 {
     transform: translateY(0);
   }
 }
-
