@@ -1,3 +1,10 @@
+<!-- 
+  Group Members:
+  1. AIN NAJIHA BINTI JUNAIDI (A23CS0038)
+  2. MUHAMMAD ZULQARNAIN BIN ALI (A23CS0139)
+  3. SIA JUN YI (A23CS0178)
+-->
+
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -8,7 +15,7 @@
         $host = "sql100.infinityfree.com";
         $username = "if0_39233150";     
         $password = "tplj4GhvUkArN";         
-        $dbname = "if0_39233150_myass3";  
+        $dbname = "if0_39233150_myass3";   
 
         // Connect to MySQL
         $conn = new mysqli($host, $username, $password, $dbname);
@@ -27,7 +34,7 @@
                 )";
                 
         if(!(mysqli_query($conn, $sql))){
-            echo "<script>alert('Table MyGuests created successfully!'); 
+            echo "<script>alert('Table ContactMsgs created successfully!'); 
                           window.history.back();
                   </script>";
         } else {
@@ -44,7 +51,7 @@
                           window.history.back();
                   </script>";
         } else {
-            echo "<script>Error: ". $data . "<br>" . mysqli_error($conn). "'); 
+            echo "<script>alert('Error: Message unable to submit.'); 
                           window.history.back();
                   </script>";
         }
