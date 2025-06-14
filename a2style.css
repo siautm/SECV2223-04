@@ -180,8 +180,8 @@ h2 {
 }
 
 .intro-image img {
-  max-width: 400px;
-  height: auto;
+  width: auto;
+  max-height: 300px;
   border-radius: 12px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
@@ -216,7 +216,7 @@ h2 {
   transition: transform 0.3s, box-shadow 0.3s;
   flex-direction: row;
   flex-wrap: wrap;
-}
+} 
 
 .member-card:hover {
   transform: translateY(-6px);
@@ -277,7 +277,7 @@ img {
   margin: 10px 0 5px;
 }
 
-.contact-form input {
+.contact-form input,textarea {
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #d1d5db;
