@@ -45,7 +45,7 @@
         if (mysqli_query($conn, $data)) {
             echo "<script>
                     alert('Your message has been sent successfully!');
-                    window.location.href = 'index.php';
+                    window.history.back();
                 </script>";
         } else {
             echo "<script>
