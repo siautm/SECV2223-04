@@ -43,7 +43,7 @@
                   </script>";
         }*/
 
-        $data = "INSERT INTO contactmsgs (fullname, email, con_message)
+        $data = "INSERT INTO ContactMsgs (fullname, email, con_message)
                 VALUES ('$name', '$email', '$message')";
 
         if (mysqli_query($conn, $data)){
@@ -51,7 +51,7 @@
                           window.history.back();
                   </script>";
         } else {
-            echo "<script>alert('Error: Message unable to submit.'); 
+            echo "<script>alert('Error: Unable to send message. :('); 
                           window.history.back();
                   </script>";
         }
