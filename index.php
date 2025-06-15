@@ -41,8 +41,7 @@
             <summary><strong>More</strong></summary>
             <div class="right-item">
               <a href="#skills">My Skills</a>
-              <a href="#">Achievements</a>
-              <a href="#">My Education</a>
+              <a href="#messages">Messages</a>
             </div>
           </details>
         </div>
@@ -205,7 +204,33 @@
                 </table>
               </div>
             </div>
+
+            <!-- Messages -->          
+            <section class="content5" id="messages">
+                <h2>Messages</h2>
+            
+                <?php
+                $host = "sql100.infinityfree.com";
+                $username = "if0_39233150";     
+                $password = "tplj4GhvUkArN";         
+                $dbname = "if0_39233150_myass3"; 
+
+                $conn = new mysqli($host, $username, $password, $dbname);
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $result = $conn->query("SELECT fullname, con_message, msg_time FROM ContactMsgs ORDER BY msg_time DESC");
+                
+                while ($row = $result->fetch_assoc()) {
+                    echo "<p><strong>" . htmlspecialchars($row['fullname']) . "</strong> - <small>" . $row['msg_time'] . "</small><br>";
+                    echo (htmlspecialchars($row['con_message'])) . "</p><br><hr>";
+                }
+                $conn->close();
+                ?>
+            </section>
           </section>
+
         </main>
 
         <!-- Footer -->
