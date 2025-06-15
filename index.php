@@ -39,6 +39,7 @@
         <div class="right">
           <details>
             <summary><strong>More</strong></summary>
+            <br>
             <div class="right-item">
               <a href="#skills">My Skills</a>
               <a href="#messages">Messages</a>
