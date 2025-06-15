@@ -153,7 +153,14 @@
                   alt="JavaScript logo"
                 />
                 <p>JavaScript</p>
-              </div>
+                </div>
+                <div class="skill-box">
+                    <img
+                    src="https://images.seeklogo.com/logo-png/26/1/php-logo-png_seeklogo-265704.png"
+                    alt="PHP logo"
+                    />
+                <p>PHP</p>
+                </div>
             </div>
           </section>
 
