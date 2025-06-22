@@ -12,14 +12,17 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <?php if (isset($_SESSION['role'])): ?>
         <?php if ($_SESSION['role'] === 'admin'): ?>
+            <a href="/college_accommodation_system/includes/profile.php">Profile</a>
             <a href="/college_accommodation_system/admin/admin_dashboard.php">Admin Dashboard</a>
             <a href="/college_accommodation_system/admin/manage_users.php">Manage Users</a>
 
         <?php elseif ($_SESSION['role'] === 'manager'): ?>
+            <a href="/college_accommodation_system/includes/profile.php">Profile</a>
             <a href="/college_accommodation_system/manager/manager_dashboard.php">Manager Dashboard</a>
             <a href="/college_accommodation_system/manager/review_application.php">Review Applications</a> 
 
         <?php elseif ($_SESSION['role'] === 'student'): ?>
+            <a href="/college_accommodation_system/includes/profile.php">Profile</a>
             <a href="/college_accommodation_system/student/student_dashboard.php">Student Dashboard</a>
             <a href="/college_accommodation_system/student/apply.php">Apply</a>
             <a href="/college_accommodation_system/student/status.php">Application Status</a>
