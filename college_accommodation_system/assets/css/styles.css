@@ -1,0 +1,154 @@
+/* === General === */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h2, h3 {
+    color: #003366;
+}
+
+/* === Header/Footer === */
+header, footer {
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+/* === Navigation === */
+nav {
+    background-color: #e0e0e0;
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #003366;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* === Main Containers === */
+main, form, table {
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* === Form Elements === */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button,
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #005599;
+}
+
+/* === Tables === */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* === Status Badges === */
+.badge-pending {
+    background-color: orange;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.badge-approved {
+    background-color: green;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.badge-rejected {
+    background-color: red;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* === Responsive Design === */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+
+    form, table {
+        width: 95%;
+    }
+
+    button, input[type="submit"] {
+        width: 100%;
+    }
+}
+
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+nav {
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
