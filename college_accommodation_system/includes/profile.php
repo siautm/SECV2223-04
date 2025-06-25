@@ -1,14 +1,10 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 session_start();
-
 include(__DIR__ . '/auth_check.php');
 include(__DIR__ . '/header.php');
 include(__DIR__ . '/navbar.php');
-include(__DIR__ . '/../database/db_connect.php'); // Go up one folder to access db_connect
+include(__DIR__ . '/../database/db_connect.php');
 
-// Get current user's info
 $username = $_SESSION['username'];
 $role = $_SESSION['role'];
 
@@ -21,7 +17,7 @@ $result = mysqli_stmt_get_result($stmt);
 $user = mysqli_fetch_assoc($result);
 $user_id = $user['id'];
 
-// Get profile info
+// Get or create profile info
 $query_profile = "SELECT * FROM profile WHERE user_id = ?";
 $stmt = mysqli_prepare($conn, $query_profile);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
@@ -44,22 +40,24 @@ if (!$profile) {
 ?>
 
 
-<h2><?= ucfirst($role) ?> Profile</h2>
 
+<main class="main-center">
+    <div class="dashboard-card">
+        <h2>👤 <?= ucfirst($role) ?> Profile</h2>
 
+        <form action="/college_accommodation_system/process/process_update_profile.php" method="POST">
+            <label style="font-weight: bold;">Full Name:</label>
+            <input type="text" name="full_name" value="<?= $profile['full_name'] ?? '' ?>" required >
 
-<form action="/college_accommodation_system/process/process_update_profile.php" method="POST">
-    <label>Full Name:</label><br>
-    <input type="text" name="full_name" value="<?= $profile['full_name'] ?? '' ?>" required><br><br>
+            <label style="font-weight: bold;">Phone:</label>
+            <input type="text" name="phone" value="<?= $profile['phone'] ?? '' ?>" required >
 
-    <label>Phone:</label><br>
-    <input type="text" name="phone" value="<?= $profile['phone'] ?? '' ?>" required><br><br>
+            <label style="font-weight: bold;">Address:</label>
+            <textarea name="address" rows="4" required class = "text"><?= $profile['address'] ?? '' ?></textarea>
 
-    <label>Address:</label><br>
-    <textarea name="address" rows="4" required><?= $profile['address'] ?? '' ?></textarea><br><br>
-
-    <button type="submit">Update Profile</button>
-</form>
+            <button type="submit" class = "submit-button">💾 Update Profile</button>
+        </form>
+    </div>
+</main>
 
 <?php include(__DIR__ . '/footer.php'); ?>
-
