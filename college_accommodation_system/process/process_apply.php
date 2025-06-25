@@ -22,4 +22,3 @@ mysqli_stmt_execute($stmt);
 
 header("Location: ../student/status.php");
 exit();
-
