@@ -1,8 +1,5 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 session_start();
-
 include('../includes/auth_check.php');
 include('../includes/header.php');
 include('../includes/navbar.php');
@@ -10,22 +7,16 @@ include('../database/db_connect.php');
 
 // Only allow manager
 if ($_SESSION['role'] !== 'manager') {
-    echo "Access denied.";
+    echo "<main style='padding: 40px; text-align: center;'><h2 style='color: red;'>🚫 Access Denied</h2><p>You do not have permission to view this page.</p></main>";
+    include('../includes/footer.php');
     exit;
 }
 
-// Process Approve/Reject directly here
+// Process Approve/Reject
 if (isset($_GET['id']) && isset($_GET['action'])) {
     $app_id = intval($_GET['id']);
     $action = $_GET['action'];
-
-    if ($action === 'approve') {
-        $status_id = 2;
-    } elseif ($action === 'reject') {
-        $status_id = 3;
-    } else {
-        $status_id = 1;
-    }
+    $status_id = ($action === 'approve') ? 2 : (($action === 'reject') ? 3 : 1);
 
     if ($status_id !== 1) {
         $query_update = "UPDATE application SET status_id = ? WHERE id = ?";
@@ -33,7 +24,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
         mysqli_stmt_bind_param($stmt, "ii", $status_id, $app_id);
         mysqli_stmt_execute($stmt);
 
-        echo "<p style='color:green;'>Application ID $app_id has been updated (Status ID: $status_id).</p>";
+        echo "<div style='text-align: center; color: green; margin-top: 20px;'>✅ Application ID $app_id updated successfully.</div>";
     }
 }
 
@@ -49,28 +40,39 @@ $query = "
 $result = mysqli_query($conn, $query);
 ?>
 
-<h2>Pending Applications</h2>
 
-<table border="1" cellpadding="8">
-    <tr>
-        <th>Student</th>
-        <th>College</th>
-        <th>Notes</th>
-        <th>Action</th>
-    </tr>
 
-    <?php while ($row = mysqli_fetch_assoc($result)): ?>
-        <tr>
-            <td><?= htmlspecialchars($row['full_name']) ?> (<?= htmlspecialchars($row['username']) ?>)</td>
-            <td><?= htmlspecialchars($row['college_name']) ?></td>
-            <td><?= htmlspecialchars($row['notes']) ?></td>
-            <td>
-                <a href="review_application.php?id=<?= $row['id'] ?>&action=approve">✅ Approve</a> |
-                <a href="review_application.php?id=<?= $row['id'] ?>&action=reject">❌ Reject</a>
-            </td>
-        </tr>
-    <?php endwhile; ?>
-</table>
+<main class="main-center">
+    <div class="dashboard-card" style="max-width: 600px;">
+        <h2 >📋 Pending Applications</h2>
+
+        <table >
+            <thead s>
+                <tr>
+                    <th >Student</th>
+                    <th>College</th>
+                    <th >Notes</th>
+                    <th >Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                    <tr>
+                        <td >
+                            <?= htmlspecialchars($row['full_name']) ?> <br><small>(<?= htmlspecialchars($row['username']) ?>)</small>
+                        </td>
+                        <td ><?= htmlspecialchars($row['college_name']) ?></td>
+                        <td ><?= htmlspecialchars($row['notes']) ?></td>
+                        <td >
+                            <a href="review_application.php?id=<?= $row['id'] ?>&action=approve" style="color: green; font-weight: bold; text-decoration: none;">✅ Approve</a> |
+                            <a href="review_application.php?id=<?= $row['id'] ?>&action=reject" style="color: red; font-weight: bold; text-decoration: none;">❌ Reject</a>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+</main>
 
 <?php include('../includes/footer.php'); ?>
 
