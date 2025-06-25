@@ -27,10 +27,12 @@ if ($row = mysqli_fetch_assoc($result)) {
         header("Location: index.php");
         exit();
     } else {
-        echo "❌ Incorrect password. <a href='login.php'>Try again</a>";
+        header("Location: login.php?message=fail");
+        #echo "❌ Incorrect password. <a href='login.php'>Try again</a>";
     }
 } else {
-    echo "❌ User not found. <a href='login.php'>Try again</a>";
+    header("Location: login.php?message=fail");
+    #echo "❌ User not found. <a href='login.php'>Try again</a>";
 }
 ?>
 
