@@ -1,12 +1,9 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 session_start();
-
 
 include('database/db_connect.php');
 
-$username = $_POST['username'];
+$username = trim($_POST['username']);
 $password = $_POST['password'];
 
 $sql = "SELECT * FROM users WHERE username = ?";
@@ -17,22 +14,37 @@ $result = mysqli_stmt_get_result($stmt);
 
 if ($row = mysqli_fetch_assoc($result)) {
     if (password_verify($password, $row['password'])) {
+        // Store login session
         $_SESSION['username'] = $row['username'];
         $_SESSION['role'] = $row['role'];
-        $_SESSION['role'] = $row['role'];
 
-        setcookie('last_username', $username, time() + (86400 * 30), "/"); // 30 days
+        // Store last username in cookie
+        setcookie('last_username', $username, time() + (86400 * 30), "/");
 
-
+        // Redirect to homepage
         header("Location: index.php");
         exit();
     } else {
-        header("Location: login.php?message=fail");
-        #echo "❌ Incorrect password. <a href='login.php'>Try again</a>";
+        // Wrong password
+        $error = "Incorrect password.";
     }
 } else {
-    header("Location: login.php?message=fail");
-    #echo "❌ User not found. <a href='login.php'>Try again</a>";
+    // No user found
+    $error = "User not found.";
 }
+
+// Show error feedback
+include('includes/header.php');
+include('includes/navbar.php');
 ?>
 
+
+<main class="error-container">
+    <div class="card error">
+        <h2>❌ Login Failed</h2>
+        <p><?= htmlspecialchars($error) ?></p>
+        <a href="login.php">← Try Again</a>
+    </div>
+</main>
+
+<?php include('includes/footer.php'); ?>
