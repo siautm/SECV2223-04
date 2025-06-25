@@ -5,7 +5,6 @@ include('../includes/header.php');
 include('../includes/navbar.php');
 include('../database/db_connect.php');
 
-// Get student user ID
 $username = $_SESSION['username'];
 $sql = "SELECT id FROM users WHERE username = ?";
 $stmt = mysqli_prepare($conn, $sql);
@@ -15,7 +14,6 @@ $result = mysqli_stmt_get_result($stmt);
 $user = mysqli_fetch_assoc($result);
 $student_id = $user['id'];
 
-// Fetch applications for this student
 $query = "SELECT application.date_applied, college.college_name, status.status_name, application.notes
           FROM application
           JOIN college ON application.college_id = college.id
@@ -29,23 +27,30 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 ?>
 
-<h2>My Accommodation Applications</h2>
-<table border="1" cellpadding="8">
-    <tr>
-        <th>Date</th>
-        <th>College</th>
-        <th>Status</th>
-        <th>Notes</th>
-    </tr>
-    <?php while ($row = mysqli_fetch_assoc($result)): ?>
-    <tr>
-        <td><?= $row['date_applied'] ?></td>
-        <td><?= $row['college_name'] ?></td>
-        <td><?= $row['status_name'] ?></td>
-        <td><?= $row['notes'] ?></td>
-    </tr>
-    <?php endwhile; ?>
-</table>
+<main class="main-center">
+    <div class="dashboard-card" style="max-width: 900px;">
+        <h2 class="dashboard-title">📄 My Applications</h2>
+        <table >
+            <thead >
+                <tr>
+                    <th >Date</th>
+                    <th >College</th>
+                    <th >Status</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                <tr >
+                    <td ><?= $row['date_applied'] ?></td>
+                    <td><?= $row['college_name'] ?></td>
+                    <td ><?= $row['status_name'] ?></td>
+                    <td><?= $row['notes'] ?></td>
+                </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+</main>
 
 <?php include('../includes/footer.php'); ?>
-
