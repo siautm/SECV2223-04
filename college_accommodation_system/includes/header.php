@@ -1,7 +1,4 @@
-<?php
-// Check and apply theme from cookie
-$theme = $_COOKIE['theme'] ?? 'light';
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +6,239 @@ $theme = $_COOKIE['theme'] ?? 'light';
     <title>College Accommodation System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Link to CSS and JavaScript -->
-    <link rel="stylesheet" href="/college_accommodation_system/assets/css/styles.css">
-    <script src="/college_accommodation_system/assets/js/script.js" defer></script>
+    <!-- Include your stylesheet and theme script -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+<style>
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #f9fbe7);
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  padding: 20px;
+}
+
+/* Reusable card container */
+.card {
+  background: white;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.card.login {
+  max-width: 400px;
+}
+
+.card.error {
+  border: 1px solid #f5c2c7;
+  background-color: #fff3f3;
+  color: #842029;
+}
+
+.error a {
+        display: inline-block;
+        margin-top: 15px;
+        text-decoration: none;
+        background-color: #dc3545;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Login form styles */
+form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 500;
+  color: #333;
+}
+
+form input[type="text"],
+form input[type="password"] {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+form input[type="checkbox"] {
+  margin-top: 15px;
+  margin-right: 6px;
+}
+
+form input[type="submit"] {
+  margin-top: 25px;
+  padding: 12px;
+  background-color: #003366;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+  background-color: #005599;
+}
+
+/* Utility classes */
+.login-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #003366;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.login-link:hover {
+  background-color: #005599;
+}
+
+.user-info {
+  background-color: #e3f2fd;
+  padding: 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 1.05rem;
+}
+
+.main-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    max-width: 900px;
+    width: 100%;
+}
+
+.dashboard-card h2 {
+    font-size: 2rem;
+    color: #003366;
+    text-align: center;
+}
+
+.dashboard-card p {
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+}
+
+.dashboard-section {
+    margin-top: 40px;
+}
+
+.dashboard-section h3 {
+    color: #003366;
+}
+
+.dashboard-section p {
+    color: #555;
+}
+
+.button-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button-link {
+    padding: 12px 20px;
+    background-color: #003366;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.button-link.secondary {
+    background-color: #005599;
+}
+
+.select{
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;"
+}
+
+
+.text{
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;"
+}
+
+.submit-button{
+    width: 100%;
+    padding: 12px; 
+    background-color: #003366; 
+    color: white; 
+    border: none; 
+    border-radius: 6px; 
+    font-size: 1rem; 
+}
+
+td{
+    padding: 10px; 
+    text-align: center;
+}
+table{
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px;
+}
+thead{
+    background-color: #003366; 
+    color: white;
+}
+tr{
+    border-bottom: 1px solid #ccc;
+}
+
+
+</style>
 </head>
-<body class="<?= htmlspecialchars($_COOKIE['theme'] ?? 'light') ?>">
-
-
+<body class="<?= htmlspecialchars($theme) ?>">
