@@ -54,7 +54,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
 
             echo "<div style='text-align: center; color: green; margin-top: 20px;'>✅ Application ID $app_id approved. College capacity updated.</div>";
         } else {
-            echo "<div style='text-align: center; color: red; margin-top: 20px;'>⚠️ Cannot approve. College is full.</div>";
+            echo "<div style='text-align: center; color: red; margin-top: 20px;'>⚠ Cannot approve. College is full.</div>";
         }
     } elseif ($action === 'reject') {
         $status_id = 3;
@@ -87,7 +87,7 @@ $result = mysqli_query($conn, $query);
 ?>
 
 <main class="main-center">
-    <div class="dashboard-card" style="max-width: 800px;">
+    <div class="dashboard-card" style="max-width: 800px; height:90%; overflow-y:auto;">
         <h2>📋 Pending Applications</h2>
 
         <table>
@@ -119,4 +119,3 @@ $result = mysqli_query($conn, $query);
 </main>
 
 <?php include('../includes/footer.php'); ?>
-
