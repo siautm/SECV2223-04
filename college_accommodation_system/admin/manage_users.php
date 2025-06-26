@@ -51,17 +51,17 @@ if (isset($_POST['add_user'])) {
         $stmt = mysqli_prepare($conn, "INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
         mysqli_stmt_bind_param($stmt, "sss", $username, $hashed, $role);
         mysqli_stmt_execute($stmt);
-        echo "<div style='text-align:center; color:green;'>✅ User added.</div>";
+        echo "<div style='text-align:center; padding:10px 0px 0px; color:green;'>✅ User added.</div>";
     } else {
-        echo "<div style='text-align:center; color:red;'>❌ All fields are required.</div>";
+        echo "<div style='text-align:center; padding:10px 0px 0px color:red;'>❌ All fields are required.</div>";
     }
 }
 ?>
 
 
 
-<main style="padding: 40px; max-width: 1000px; margin: auto;">
-    <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
+<main style="padding: 10px; max-width: 700px; margin: auto;">
+    <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.1); height:80%; overflow-y:auto;">
         <h2 style="text-align: center; color: #003366; margin-bottom: 20px;">
             <?= $edit_mode ? "✏️ Edit User" : "➕ Add New User" ?>
         </h2>
@@ -124,6 +124,3 @@ if (isset($_POST['add_user'])) {
 </main>
 
 <?php include('../includes/footer.php'); ?>
-
-<?php include('../includes/footer.php'); ?>
-
