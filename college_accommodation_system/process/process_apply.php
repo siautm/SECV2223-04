@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include('../database/db_connect.php');
@@ -20,5 +21,15 @@ $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "iissi", $student_id, $college_id, $notes, $date_applied, $status_id);
 mysqli_stmt_execute($stmt);
 
-header("Location: ../student/status.php");
+echo "
+<script>
+    if (confirm('Application has been sent! Click OK to view.')) {
+        window.location.href = '../student/status.php';
+    }
+    else{
+        window.location.href = '../student/apply.php?update=success';
+    }
+</script>";
+
+//header("Location: ../student/status.php");
 exit();
