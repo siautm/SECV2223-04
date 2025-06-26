@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 22, 2025 at 02:38 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: sql107.byetcluster.com
+-- Generation Time: Jun 25, 2025 at 10:02 PM
+-- Server version: 11.4.7-MariaDB
+-- PHP Version: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `accommodation_system`
+-- Database: `if0_39316356_accommodation_system`
 --
 
 -- --------------------------------------------------------
@@ -42,15 +43,15 @@ CREATE TABLE `application` (
 --
 
 INSERT INTO `application` (`id`, `student_id`, `college_id`, `notes`, `date_applied`, `status_id`, `status`) VALUES
-(1, 1, 1, '', '2025-06-21', 2, 'rejected'),
-(2, 1, 1, '', '2025-06-21', 2, 'rejected'),
-(3, 1, 1, '', '2025-06-21', 2, 'rejected'),
+(1, 1, 1, '', '2025-06-21', 3, 'rejected'),
+(2, 1, 1, '', '2025-06-21', 3, 'rejected'),
+(3, 1, 1, '', '2025-06-21', 3, 'rejected'),
 (4, 1, 1, '', '2025-06-21', 2, 'approved'),
 (5, 1, 1, '', '2025-06-21', 2, 'approved'),
 (6, 1, 2, '', '2025-06-21', 2, 'approved'),
 (7, 1, 2, '', '2025-06-21', 2, 'approved'),
-(8, 1, 1, '', '2025-06-21', 2, 'rejected'),
-(9, 1, 1, 'ccccccccccc', '2025-06-21', 2, 'approved');
+(8, 1, 1, '', '2025-06-21', 3, 'rejected'),
+(9, 1, 1, 'single room', '2025-06-25', 1, 'pending');
 
 -- --------------------------------------------------------
 
@@ -69,8 +70,9 @@ CREATE TABLE `college` (
 --
 
 INSERT INTO `college` (`id`, `college_name`, `capacity`) VALUES
-(1, 'Kolej Tun Dr Ismail', 50),
-(2, 'Kolej Tunku Abdul Rahman', 40);
+(1, 'Kolej Tun Dr Ismail', 48),
+(2, 'Kolej Tunku Abdul Rahman', 40),
+(3, 'Kolej Rahman Putra', 45);
 
 -- --------------------------------------------------------
 
@@ -91,9 +93,9 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `user_id`, `full_name`, `phone`, `address`) VALUES
-(1, 1, 'Ali Bin Abuuuu', '0123456789', 'Kuala Lumpur'),
+(1, 1, 'Ali Bin Abu', '0111222333', 'alor gajah'),
 (2, 2, 'Alice Manager', '0111222333', 'Manager Residence, Block A, Campus'),
-(3, 3, 'dsda', '12121233', 'asdasdas');
+(3, 3, 'admin bin mohamad amin', '0123456778', 'utm jb');
 
 -- --------------------------------------------------------
 
@@ -135,7 +137,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
 (1, 'student1', '$2y$10$umWHoMqoPAI55IzPgQfCxOvcL6Y/iKVoqYP6AwHfZyNU6xXq/21PK', 'student'),
 (2, 'manager1', '$2y$10$umWHoMqoPAI55IzPgQfCxOvcL6Y/iKVoqYP6AwHfZyNU6xXq/21PK', 'manager'),
-(3, 'admin', '$2y$10$umWHoMqoPAI55IzPgQfCxOvcL6Y/iKVoqYP6AwHfZyNU6xXq/21PK', 'admin');
+(3, 'admin', '$2y$10$umWHoMqoPAI55IzPgQfCxOvcL6Y/iKVoqYP6AwHfZyNU6xXq/21PK', 'admin'),
+(4, 'admin2', '$2y$10$wuZDN/4r0QK5nPh1u/1JIOKoK12Jo0mjjpM0YDV/Epl5jnKqqRd7G', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -184,19 +187,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `college`
 --
 ALTER TABLE `college`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `status`
@@ -208,7 +211,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
