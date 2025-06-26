@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -26,25 +27,11 @@ if ($row = mysqli_fetch_assoc($result)) {
         exit();
     } else {
         // Wrong password
-        $error = "Incorrect password.";
+        //$error = "Incorrect password.";
+        header("Location: login.php?message=failpw");
     }
 } else {
     // No user found
-    $error = "User not found.";
+    //$error = "User not found.";
+    header("Location: login.php?message=failuser");
 }
-
-// Show error feedback
-include('includes/header.php');
-include('includes/navbar.php');
-?>
-
-
-<main class="error-container">
-    <div class="card error">
-        <h2>❌ Login Failed</h2>
-        <p><?= htmlspecialchars($error) ?></p>
-        <a href="login.php">← Try Again</a>
-    </div>
-</main>
-
-<?php include('includes/footer.php'); ?>
