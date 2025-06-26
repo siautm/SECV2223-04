@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +57,14 @@ main {
         transition: background-color 0.3s ease;
 }
 
+.nav-bar {
+    text-decoration:none;
+}
+
+.nav-bar:hover{
+    color: #0033cc;
+    text-decoration:underline;
+}
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -237,7 +244,6 @@ thead{
 tr{
     border-bottom: 1px solid #ccc;
 }
-
 
 </style>
 </head>
