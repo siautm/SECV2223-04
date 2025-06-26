@@ -40,12 +40,22 @@ if (!$profile) {
 ?>
 
 
-
 <main class="main-center">
+    <?php 
+        if(isset($_GET['update'])){
+            if($_GET['update']=="success"){
+                echo "<script>alert('Profile updated successfully! Your profile information has been saved'); history.back();</script>";
+            }
+            else{
+                echo "<script>alert('Error! Profile update failed.'); history.back();</script>";
+            }
+        }
+    ?>
     <div class="dashboard-card">
         <h2>👤 <?= ucfirst($role) ?> Profile</h2>
 
-        <form action="/college_accommodation_system/process/process_update_profile.php" method="POST">
+
+        <form action="/process/process_update_profile.php" method="POST">
             <label style="font-weight: bold;">Full Name:</label>
             <input type="text" name="full_name" value="<?= $profile['full_name'] ?? '' ?>" required >
 
