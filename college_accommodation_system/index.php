@@ -11,7 +11,7 @@ include('includes/navbar.php');
 
         <?php if (isset($_SESSION['username'])): ?>
             <div class="user-info">
-                <p>Welcome, <strong><?= htmlspecialchars($_SESSION['username']) ?></strong></p>
+                <p>Welcome, <strong><?= htmlspecialchars($_SESSION['username']) ?></strong> <i>!</i></p>
                 <p>Your role: <strong><?= ucfirst(htmlspecialchars($_SESSION['role'])) ?></strong></p>
             </div>
         <?php else: ?>
