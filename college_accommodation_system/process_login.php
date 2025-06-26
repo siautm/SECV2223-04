@@ -20,7 +20,14 @@ if ($row = mysqli_fetch_assoc($result)) {
         $_SESSION['role'] = $row['role'];
 
         // Store last username in cookie
-        setcookie('last_username', $username, time() + (86400 * 30), "/");
+        if (isset($_POST['remember'])) {
+            // User checked "Remember Me"
+            setcookie('last_username', $username, time() + (86400 * 30), "/");
+        } else {
+            // User did NOT check "Remember Me" — delete cookie
+            setcookie('last_username', '', time() - 3600, "/");
+        }
+
 
         // Redirect to homepage
         header("Location: index.php");
