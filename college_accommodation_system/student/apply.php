@@ -11,12 +11,18 @@ $query = "SELECT * FROM college";
 $result = mysqli_query($conn, $query);
 ?>
 
-
-
 <main class="main-center">
     <div class="dashboard-card" style="max-width: 600px;">
         <h2 >🏫 Apply for Accommodation</h2>
-        <form action="/college_accommodation_system/process/process_apply.php" method="POST">
+        <?php
+            if(isset($_GET['update'])){
+                if($_GET['update']=="success"){
+                    echo "<div style='background-color:lightgreen; padding:10px; border-radius:5px; color:darkgreen;'>
+                    ✅ Application has been sent!</div><br>";
+                }
+            }
+        ?>
+        <form action="/process/process_apply.php" method="POST">
             <label style="font-weight: bold;">Select College:</label><br>
             <select name="college_id" required class = "select">
                 <option value="">-- Select College --</option>
