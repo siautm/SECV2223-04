@@ -98,6 +98,7 @@ form input[type="submit"]:hover {
 }
 
 /* Utility classes */
+/*
 .login-link {
   display: inline-block;
   margin-top: 20px;
@@ -136,7 +137,7 @@ form input[type="submit"]:hover {
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
     max-width: 900px;
-    width: 100%;
+    width: 100%;    
 }
 
 .dashboard-card h2 {
@@ -224,7 +225,4 @@ thead{
 }
 tr{
     border-bottom: 1px solid #ccc;
-}
-
-
-
+}*/
