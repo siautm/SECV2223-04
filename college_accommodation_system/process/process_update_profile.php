@@ -17,5 +17,5 @@ $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "sssi", $full_name, $phone, $address, $user_id);
 mysqli_stmt_execute($stmt);
 
-header("Location: ../includes/profile.php");
+header("Location: ../includes/profile.php?update=success");
 exit();
