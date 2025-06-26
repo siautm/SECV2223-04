@@ -25,10 +25,11 @@ $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, "i", $student_id);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
+
 ?>
 
 <main class="main-center">
-    <div class="dashboard-card" style="max-width: 900px;">
+    <div class="dashboard-card" style="height:90%; overflow-y:auto;">
         <h2 class="dashboard-title">📄 My Applications</h2>
         <table >
             <thead >
@@ -40,11 +41,21 @@ $result = mysqli_stmt_get_result($stmt);
                 </tr>
             </thead>
             <tbody>
-                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                <?php while ($row = mysqli_fetch_assoc($result)): 
+                $status = $row['status_name'];
+                $color = match($status) {
+                    'Pending' => 'orange',
+                    'Approved' => 'green',
+                    'Rejected' => 'darkred',
+                    default => 'black'
+                };?>
                 <tr >
                     <td ><?= $row['date_applied'] ?></td>
                     <td><?= $row['college_name'] ?></td>
-                    <td ><?= $row['status_name'] ?></td>
+                    <td style="color:<?= $color?>;">
+                    <?= $row['status_name'] 
+                    ?>
+                    </td>
                     <td><?= $row['notes'] ?></td>
                 </tr>
                 <?php endwhile; ?>
