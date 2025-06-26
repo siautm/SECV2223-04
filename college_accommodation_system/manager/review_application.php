@@ -17,6 +17,8 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
     $app_id = intval($_GET['id']);
     $action = $_GET['action'];
 
+    
+
     // Get college_id of the application
     $query_app = "SELECT college_id FROM application WHERE id = ?";
     $stmt_app = mysqli_prepare($conn, $query_app);
@@ -54,7 +56,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
 
             echo "<div style='text-align: center; color: green; margin-top: 20px;'>✅ Application ID $app_id approved. College capacity updated.</div>";
         } else {
-            echo "<div style='text-align: center; color: red; margin-top: 20px;'>⚠ Cannot approve. College is full.</div>";
+            echo "<div style='text-align: center; color: red; margin-top: 20px;'>⚠️ Cannot approve. College is full.</div>";
         }
     } elseif ($action === 'reject') {
         $status_id = 3;
@@ -72,6 +74,9 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
 $query = "
     SELECT 
         application.id, 
+        application.student_id,
+        application.status,              -- ✅ needed for display
+        application.date_applied,        -- ✅ needed for display
         users.username, 
         profile.full_name, 
         college.college_name, 
@@ -81,41 +86,53 @@ $query = "
     JOIN users ON application.student_id = users.id
     JOIN profile ON users.id = profile.user_id
     JOIN college ON application.college_id = college.id
-    WHERE application.status_id = 1
+    ORDER BY application.date_applied DESC
 ";
+
 $result = mysqli_query($conn, $query);
 ?>
 
 <main class="main-center">
-    <div class="dashboard-card" style="max-width: 800px; height:90%; overflow-y:auto;">
+    <div class="dashboard-card" style="max-width: 800px;">
         <h2>📋 Pending Applications</h2>
 
         <table>
             <thead>
-                <tr>
-                    <th>Student</th>
-                    <th>College (Capacity Left)</th>
-                    <th>Notes</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+    <tr>
+        <th>Student</th>
+        <th>College (Capacity Left)</th>
+        <th>Notes</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+</thead>
+
             <tbody>
-                <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                    <tr>
-                        <td>
-                            <?= htmlspecialchars($row['full_name']) ?><br><small>(<?= htmlspecialchars($row['username']) ?>)</small>
-                        </td>
-                        <td><?= htmlspecialchars($row['college_name']) ?> (<?= $row['capacity'] ?> left)</td>
-                        <td><?= htmlspecialchars($row['notes']) ?></td>
-                        <td>
-                            <a href="review_application.php?id=<?= $row['id'] ?>&action=approve" style="color: green; font-weight: bold; text-decoration: none;">✅ Approve</a> |
-                            <a href="review_application.php?id=<?= $row['id'] ?>&action=reject" style="color: red; font-weight: bold; text-decoration: none;">❌ Reject</a>
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
+    <?php while ($row = mysqli_fetch_assoc($result)): ?>
+        <tr>
+            <td><?= htmlspecialchars($row['full_name']) ?><br>
+                <small>(<?= htmlspecialchars($row['username']) ?>)</small>
+            </td>
+            <td><?= htmlspecialchars($row['college_name']) ?> (<?= $row['capacity'] ?> left)</td>
+            <td><?= htmlspecialchars($row['notes']) ?></td>
+            <td><?= htmlspecialchars(ucfirst($row['status'])) ?></td>
+            <td><?= htmlspecialchars($row['date_applied']) ?></td>
+            <td>
+                <?php if ($row['status'] === 'pending'): ?>
+                    <a href="review_application.php?id=<?= $row['id'] ?>&action=approve" style="color: green; font-weight: bold; text-decoration: none;">✅ Approve</a> |
+                    <a href="review_application.php?id=<?= $row['id'] ?>&action=reject" style="color: red; font-weight: bold; text-decoration: none;">❌ Reject</a>
+                <?php else: ?>
+                    <span style="color: gray;">-</span>
+                <?php endif; ?>
+            </td>
+        </tr>
+    <?php endwhile; ?>
+</tbody>
+
         </table>
     </div>
 </main>
 
 <?php include('../includes/footer.php'); ?>
+
